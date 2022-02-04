@@ -1,0 +1,11 @@
+library(dplyr)
+library(openair)
+library(gglot2)
+
+time = c(1982:2001)
+drunkdriving = c(25.2,23.6,23.8,22.7,24.0,23.6,23.6,22.4,22.0,19.9,17.9,17.5,16.6,17.2,17.2,16.5,16.0,16.0,16.7,16.7)
+data = data.frame(time, drunkdriving)
+data$time = as.numeric(data$time)
+data$drunkdriving = as.numeric(data$drunkdriving)
+print(data)
+hist(data)
