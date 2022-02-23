@@ -37,11 +37,15 @@ dat = read.csv("C:/Users/redte/Documents/Stathw/ch8 cw/data.csv")
 
 dat = dat[((!is.na(dat$Armspan_cm)) & (dat$Armspan_cm > 100)),]
 
-r = cor(dat$Armspan_cm, dat$Height_cm)
+r = cor(dat$Height_cm, dat$Armspan_cm)
 ybar = mean(dat$Armspan_cm) 
 sy = sd(dat$Armspan_cm)
 xbar = mean(dat$Height_cm)
 sx = sd(dat$Height_cm)
+print(ybar)
+print(sy)
+print(sx)
+print(xbar)
 
 b = r * sy / sx
 print(b)
@@ -58,7 +62,7 @@ LSRL = function(x) {
 dat = dat %>% mutate(residual = dat$Armspan_cm - LSRL(dat$Height_cm))
 
 ggplot(dat, aes(x = Height_cm, y = Armspan_cm)) + 
-  geom_abline(intercept = a, slope = b) + 
+  #geom_abline(intercept = a, slope = b) + 
   geom_point()
 
 ggplot(dat, aes(x = Armspan_cm, y = residual)) + 
