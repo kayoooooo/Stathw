@@ -39,8 +39,6 @@ dat = mutate(dat, res2 = dat$lift - LSRL(dat$newx))
 ggplot(dat, aes(x = newx, y = lift)) + 
   geom_point()
 
-
-
 ggplot(dat, aes(x = lift, y = res2)) + 
   geom_hline(yintercept = 0) + 
   geom_point()
