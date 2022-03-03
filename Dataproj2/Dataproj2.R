@@ -3,7 +3,7 @@ library(dplyr)
 
 dat = read.csv("C:/Users/redte/Documents/Stathw/Dataproj2/tomatoes.csv")
 
-dat1 = dat[dat$genres == "Comedy",]
+dat1 = dat[grepl("Comedy", dat$genres),] #any movies that are comedy and maybe other genres
 dat2 = dat[grepl("Action", dat$genres),] #any movies that are action and another genre
 
 hist(dat1$tomatometer_rating)
