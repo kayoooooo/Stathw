@@ -29,6 +29,23 @@ model1 = lm(dat1$audience_rating ~ dat1$tomatometer_rating)
 model2 = lm(dat2$audience_rating ~ dat2$tomatometer_rating)
 summary(model1)
 summary(model2)
+
+ggplot(dat1, aes(x = tomatometer_rating, y = audience_rating)) + 
+  ggtitle("Comedy Movie Rating Comparisons") + 
+  xlab("Tomatometer Rating") + 
+  ylab("Audience Rating") + 
+  geom_smooth(method=lm, se=FALSE, col='red') +
+  geom_point()
+
+
+ggplot(dat2, aes(x = tomatometer_rating, y = audience_rating)) + 
+  ggtitle("Action Movie Rating Comparisons") + 
+  xlab("Tomatometer Rating") + 
+  ylab("Audience Rating") + 
+  geom_smooth(method=lm, se=FALSE, col='red') +
+  geom_point()
+
+
 res1 = resid(lm(dat1$audience_rating ~ dat1$tomatometer_rating))
 dat1 = mutate(dat1, res = res1)
 res2 = resid(lm(dat2$audience_rating ~ dat2$tomatometer_rating))
@@ -45,6 +62,7 @@ ggplot(dat2, aes(x = tomatometer_rating, y = res)) +
   ylab("Residual") + 
   geom_hline(yintercept = 0, color = "red") + 
   geom_point()
+
 print(cor(dat1$tomatometer_rating, dat1$audience_rating))
 print(cor(dat2$tomatometer_rating, dat2$audience_rating))
 print(cor(dat1$tomatometer_rating, dat1$audience_rating)^2)
