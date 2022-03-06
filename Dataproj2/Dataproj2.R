@@ -29,6 +29,29 @@ model1 = lm(dat1$audience_rating ~ dat1$tomatometer_rating)
 model2 = lm(dat2$audience_rating ~ dat2$tomatometer_rating)
 summary(model1)
 summary(model2)
+res1 = resid(lm(dat1$audience_rating ~ dat1$tomatometer_rating))
+dat1 = mutate(dat1, res = res1)
+res2 = resid(lm(dat2$audience_rating ~ dat2$tomatometer_rating))
+dat2 = mutate(dat2, res = res2)
+ggplot(dat1, aes(x = tomatometer_rating, y = res)) +
+  ggtitle("Comedy Movie Residual Plot") + 
+  xlab("Tomatometer Rating") + 
+  ylab("Residual") +  
+  geom_hline(yintercept = 0, color = "red") + 
+  geom_point()
+ggplot(dat2, aes(x = tomatometer_rating, y = res)) + 
+  ggtitle("Action Movie Residual Plot") + 
+  xlab("Tomatometer Rating") + 
+  ylab("Residual") + 
+  geom_hline(yintercept = 0, color = "red") + 
+  geom_point()
+print(cor(dat1$tomatometer_rating, dat1$audience_rating))
+print(cor(dat2$tomatometer_rating, dat2$audience_rating))
+print(cor(dat1$tomatometer_rating, dat1$audience_rating)^2)
+print(cor(dat2$tomatometer_rating, dat2$audience_rating)^2)
+
 deviance(model1)
 deviance(model2)
-print(cor(dat1$tomatometer_rating, dat1$audience_rating))
+print(sum((dat1$audience_rating-mean(dat1$audience_rating))^2))
+print(sum((dat2$audience_rating-mean(dat2$audience_rating))^2))
+print(sd(dat1$audience_rating))
