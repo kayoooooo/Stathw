@@ -10,14 +10,22 @@ dat2 = dat2[(!is.na(dat2$tomatometer_rating) & !is.na(dat2$audience_rating)),]
 
 hist(dat1$tomatometer_rating, xlab = "Tomatometer rating", main = "Tomatometer Ratings of Comedy Movies", ylim = c(0,800))
 hist(dat2$tomatometer_rating, xlab = "Tomatometer rating", main = "Tomatometer Ratings of Action Movies", ylim = c(0,500))
-print(length(dat1[(dat1$tomatometer_rating>80 & dat1$tomatometer_rating<90),]$tomatometer_rating))
+
+print(quantile(dat1$tomatometer_rating))
+print(mean(dat1$tomatometer_rating))
+print(IQR(dat1$tomatometer_rating))
+print(sd(dat1$tomatometer_rating))
+
+print(quantile(dat2$tomatometer_rating))
+print(mean(dat2$tomatometer_rating))
+print(IQR(dat2$tomatometer_rating))
+print(sd(dat2$tomatometer_rating))
 
 ggplot(dat1, aes(x = tomatometer_rating, y = audience_rating)) + 
   ggtitle("Comedy Movie Rating Comparisons") + 
   xlab("Tomatometer Rating") + 
   ylab("Audience Rating") + 
   geom_point()
-
 
 ggplot(dat2, aes(x = tomatometer_rating, y = audience_rating)) + 
   ggtitle("Action Movie Rating Comparisons") + 
@@ -37,14 +45,12 @@ ggplot(dat1, aes(x = tomatometer_rating, y = audience_rating)) +
   geom_smooth(method=lm, se=FALSE, col='red') +
   geom_point()
 
-
 ggplot(dat2, aes(x = tomatometer_rating, y = audience_rating)) + 
   ggtitle("Action Movie Rating Comparisons") + 
   xlab("Tomatometer Rating") + 
   ylab("Audience Rating") + 
   geom_smooth(method=lm, se=FALSE, col='red') +
   geom_point()
-
 
 res1 = resid(lm(dat1$audience_rating ~ dat1$tomatometer_rating))
 dat1 = mutate(dat1, res = res1)
