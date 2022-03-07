@@ -1,0 +1,5 @@
+names = c("Barrett", "Bowman", "Chen", "DeLara", "DeRoos", "Grigorov", "Maceli", "Mulvaney", "Pagliarulo", "Rosica", "Smithson", "Tadros", "Williams", "Yamamoto")
+dat = data.frame(names, selection = c(runif(14)))
+print(dat)
+print(dat[which(dat$selection == min(dat$selection)),]$names)
+print(dat[which(dat$selection == max(dat$selection)),]$names)
