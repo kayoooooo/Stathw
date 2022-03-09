@@ -14,3 +14,10 @@ for (x in c(1:1000)) {
     dat[x,]$rand1 = "B"
   }
 }
+
+datA = dat[(dat$rand1 == "A"),]
+datB = dat[(dat$rand1 == "B"),]
+
+#Part B
+datM = dat[(dat$Gender == "Male"),]
+datF = dat[(dat$Gender == "Female"),]
