@@ -1,6 +1,7 @@
 library(ggplot2)
 library(dplyr)
 
+#Part 1
 dat = read.csv("C:/Users/redte/Documents/Stathw/Dataproj2/tomatoes.csv")
 
 dat1 = dat[grepl("Comedy", dat$genres),] #any movies that are comedy and maybe other genres
@@ -21,6 +22,7 @@ print(mean(dat2$tomatometer_rating))
 print(IQR(dat2$tomatometer_rating))
 print(sd(dat2$tomatometer_rating))
 
+#2 var starts here
 ggplot(dat1, aes(x = tomatometer_rating, y = audience_rating)) + 
   ggtitle("Comedy Movie Rating Comparisons") + 
   xlab("Tomatometer Rating") + 

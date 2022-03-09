@@ -2,6 +2,7 @@ library(ggplot2)
 library(qqplotr)
 library(dplyr)
 
+#Part 1
 dat1 = read.csv("C:/Users/redte/Documents/Stathw/Dataproj1/dataprojlusby4.csv")
 dat2 = read.csv("C:/Users/redte/Documents/Stathw/Dataproj1/dataprojlusby7.csv")
 dat3 = read.csv("C:/Users/redte/Documents/Stathw/Dataproj1/dataprojstein2.csv")
@@ -16,6 +17,7 @@ ggplot(dat3[(dat3$Handed != ""),], aes(x = Handed)) +
   xlab("Stein Period 2 Handedness") + 
   geom_bar()
 
+#Part 2
 dat4 = read.csv("C:/Users/redte/Documents/Stathw/Dataproj1/ohio.csv")
 dat1 = dat1[(!is.na(dat1$Armspan_cm)),]
 dat4 = dat4[(!is.na(dat1$Armspan_cm)),]
