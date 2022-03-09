@@ -23,6 +23,17 @@ hist(datB$B.improvement)
 boxplot(datA$A.improvement)
 boxplot(datB$B.improvement)
 
+
+print(quantile(datA$A.improvement))
+print(mean(datA$A.improvement))
+print(IQR(datA$A.improvement))
+print(sd(datA$A.improvement))
+
+print(quantile(datB$B.improvement))
+print(mean(datB$B.improvement))
+print(IQR(datB$B.improvement))
+print(sd(datB$B.improvement))
+
 #Part B
 datM = dat[(dat$Gender == "Male"),]
 datF = dat[(dat$Gender == "Female"),]
