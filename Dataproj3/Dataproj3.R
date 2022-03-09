@@ -18,6 +18,11 @@ for (x in c(1:1000)) {
 datA = dat[(dat$rand1 == "A"),]
 datB = dat[(dat$rand1 == "B"),]
 
+hist(datA$A.improvement)
+hist(datB$B.improvement)
+boxplot(datA$A.improvement)
+boxplot(datB$B.improvement)
+
 #Part B
 datM = dat[(dat$Gender == "Male"),]
 datF = dat[(dat$Gender == "Female"),]
