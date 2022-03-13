@@ -49,6 +49,21 @@ for (x in c(1:500)) {
 datMA = datM[(datM$rand1 == "A"),]
 datMB = datM[(datM$rand1 == "B"),]
 
+hist(datMA$A.improvement, xlab = "Change in cholesterol level", main = "Cholesterol change in males using drug A", ylim = c(0,100), xlim = c(-5,25))
+hist(datMB$B.improvement, xlab = "Change in cholesterol level", main = "Cholesterol change in males using drug B", ylim = c(0,100), xlim = c(-5,25))
+boxplot(datMA$A.improvement, main = "Male Drug A Recipients", ylab = "Change in cholesterol level", ylim = c(-5,25))
+boxplot(datMB$B.improvement, main = "Male Drug B Recipients", ylab = "Change in cholesterol level", ylim = c(-5,25))
+
+print(quantile(datMA$A.improvement))
+print(mean(datMA$A.improvement))
+print(IQR(datMA$A.improvement))
+print(sd(datMA$A.improvement))
+
+print(quantile(datMB$B.improvement))
+print(mean(datMB$B.improvement))
+print(IQR(datMB$B.improvement))
+print(sd(datMB$B.improvement))
+
 datF = dat[(dat$Gender == "Female"),] 
 median1 = median(datF$rand1)
 for (x in c(1:500)) {
@@ -61,3 +76,18 @@ for (x in c(1:500)) {
 }
 datFA = datF[(datF$rand1 == "A"),]
 datFB = datF[(datF$rand1 == "B"),]
+
+hist(datFA$A.improvement, xlab = "Change in cholesterol level", main = "Cholesterol change in females using drug A", ylim = c(0,100), xlim = c(-5,25))
+hist(datFB$B.improvement, xlab = "Change in cholesterol level", main = "Cholesterol change in females using drug B", ylim = c(0,100), xlim = c(-5,25))
+boxplot(datFA$A.improvement, main = "Female Drug A Recipients", ylab = "Change in cholesterol level", ylim = c(-5,25))
+boxplot(datFB$B.improvement, main = "Female Drug B Recipients", ylab = "Change in cholesterol level", ylim = c(-5,25))
+
+print(quantile(datFA$A.improvement))
+print(mean(datFA$A.improvement))
+print(IQR(datFA$A.improvement))
+print(sd(datFA$A.improvement))
+
+print(quantile(datFB$B.improvement))
+print(mean(datFB$B.improvement))
+print(IQR(datFB$B.improvement))
+print(sd(datFB$B.improvement))
