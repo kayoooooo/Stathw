@@ -18,10 +18,10 @@ for (x in c(1:1000)) {
 datA = dat[(dat$rand1 == "A"),]
 datB = dat[(dat$rand1 == "B"),]
 
-hist(datA$A.improvement)
-hist(datB$B.improvement)
-boxplot(datA$A.improvement)
-boxplot(datB$B.improvement)
+hist(datA$A.improvement, xlab = "Change in cholesterol level", main = "Cholesterol change using drug A", ylim = c(0,100), xlim = c(-5,25))
+hist(datB$B.improvement, xlab = "Change in cholesterol level", main = "Cholesterol change using drug B", ylim = c(0,100), xlim = c(-5,25))
+boxplot(datA$A.improvement, main = "Drug A Recipients", ylab = "Change in cholesterol level", ylim = c(-5,25))
+boxplot(datB$B.improvement, main = "Drug B Recipients", ylab = "Change in cholesterol level", ylim = c(-5,25))
 
 
 print(quantile(datA$A.improvement))
@@ -35,5 +35,29 @@ print(IQR(datB$B.improvement))
 print(sd(datB$B.improvement))
 
 #Part B
+dat$rand1 = runif(1000)
 datM = dat[(dat$Gender == "Male"),]
-datF = dat[(dat$Gender == "Female"),]
+median1 = median(datM$rand1)
+for (x in c(1:500)) {
+  if (datM[x,]$rand1 > median1) {
+    datM[x,]$rand1 = "A"
+  }
+  else {
+    datM[x,]$rand1 = "B"
+  }
+}
+datMA = datM[(datM$rand1 == "A"),]
+datMB = datM[(datM$rand1 == "B"),]
+
+datF = dat[(dat$Gender == "Female"),] 
+median1 = median(datF$rand1)
+for (x in c(1:500)) {
+  if (datF[x,]$rand1 > median1) {
+    datF[x,]$rand1 = "A"
+  }
+  else {
+    datF[x,]$rand1 = "B"
+  }
+}
+datFA = datF[(datF$rand1 == "A"),]
+datFB = datF[(datF$rand1 == "B"),]
