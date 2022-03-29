@@ -25,3 +25,6 @@ ggplot(data = dat1, aes(x = sortm, y = sortf)) +
   geom_point()
 print(summary(lm(sortf~sortm)))
 print(cor(sortf,sortm))
+dat1 = mutate(dat1, combine = dat1$sortm+dat1$sortf)
+print(mean(dat1$combine))
+print(sd(dat1$combine))
