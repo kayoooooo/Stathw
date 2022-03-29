@@ -49,8 +49,9 @@ highm = sortm[41:50]
 lowf = sortf[0:10]
 midf = sortf[11:40]
 highf = sortf[41:50]
-dat3 = data.frame(matrix(ncol = 2, nrow = 0))
-colnames(dat3) = c("m", "f")
+# run commented code to randomize
+# dat3 = data.frame(matrix(ncol = 2, nrow = 0))
+# colnames(dat3) = c("m", "f")
 # for (x in c(1:10)) {
 #   rand = sample(1:length(lowf), 1)
 #   print(rand)
@@ -74,3 +75,6 @@ ggplot(dat = dat3, aes(x = m, y = f)) +
   geom_point()
 print(summary(lm(dat3$f ~ dat3$m)))
 print(cor(dat3$f, dat3$m))
+dat3 = mutate(dat3, combine = dat3$f + dat3$m)
+print(mean(dat3$combine))
+print(sd(dat3$combine))
