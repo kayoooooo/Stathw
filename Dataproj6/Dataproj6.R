@@ -26,7 +26,8 @@ cIntLow = mu - tscore * se
 cIntHigh = mu + tscore * se
 print(cIntLow)
 print(cIntHigh)
-  
+t.test(age_sample) #This does it for me actually
+
 #Q2 (2sample t-test): Are perpetrators roughly the same age as victims in cases from Michigan?
 dat2 = dat[dat$State == "Michigan",]
 perp = dat2$Perpetrator.Age
@@ -47,6 +48,8 @@ SE = sqrt(sigP^2 / 1700 + sigV^2 / 1600)
 df = 1599
 tscore = (muP-muV)/SE
 pt(-tscore, 1900) * 2 #for two tailed
+t.test(perp_sample, vict_sample) #This actually automates it, oops
+
 #Q3 (2proportion z-test): 
 dat3 = dat[dat$State == "Michigan",]
 pm = dat3$Perpetrator.Sex 
@@ -58,4 +61,6 @@ vms = sample(vm, 2800, replace = F)
 pmp = length(pms[pms == "Male"]) / (length(pms))
 vmp = length(vms[vms == "Male"]) / (length(vms))
 pPool = (length(pms[pms == "Male"]) + length(vms[vms == "Male"])) / (length(pms)+length(vms))
-SE = sqrt((pPool * (1 - pPool) * (1/ length(pms) + 1/length(vms))))
+SE = sqrt((pPool * (1 - pPool)) * (1/ length(pms) + 1/length(vms)))
+zscore = (pmp-vmp) / SE
+pnorm(-zscore) * 2 #for two tailed
